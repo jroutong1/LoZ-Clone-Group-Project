@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c73344xmpca6l" path="res://Objects/player.gd" id="1_3y5cq"]
 [ext_resource type="Texture2D" uid="uid://b653tgoue5qwt" path="res://Sprites/Player.png" id="1_y0qk3"]
+[ext_resource type="PackedScene" uid="uid://bmfkbsknlo36t" path="res://Objects/camera.tscn" id="3_2i4gt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3y5cq"]
 atlas = ExtResource("1_y0qk3")
@@ -207,7 +208,11 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2i4gt"]
 size = Vector2(8, 6)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ad8t"]
+size = Vector2(0.5, 0.5)
+
 [node name="Player" type="CharacterBody2D" unique_id=856887729]
+collision_layer = 2
 floor_stop_on_slope = false
 script = ExtResource("1_3y5cq")
 
@@ -217,6 +222,19 @@ sprite_frames = SubResource("SpriteFrames_3y5cq")
 animation = &"North"
 autoplay = "South"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1413904005]
+[node name="Collision" type="CollisionShape2D" parent="." unique_id=1413904005]
 position = Vector2(0, -3)
 shape = SubResource("RectangleShape2D_2i4gt")
+
+[node name="On Screen Check" type="CharacterBody2D" parent="." unique_id=1144038069]
+collision_layer = 16
+collision_mask = 0
+collision_priority = 2.0
+
+[node name="Shape" type="CollisionShape2D" parent="On Screen Check" unique_id=1322724936]
+position = Vector2(0, -0.25)
+shape = SubResource("RectangleShape2D_0ad8t")
+debug_color = Color(0.632397, 0.5244527, 0.19569397, 0.41960785)
+
+[node name="Camera" parent="." unique_id=1572491455 instance=ExtResource("3_2i4gt")]
+top_level = true

@@ -2,7 +2,20 @@
 
 [ext_resource type="Script" uid="uid://tw1a68k20opv" path="res://Objects/camera.gd" id="1_5wcd0"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5wcd0"]
+size = Vector2(256, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h8b3l"]
+size = Vector2(16, 256)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_44l16"]
+size = Vector2(16, 256)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lq5bj"]
+size = Vector2(256, 16)
+
 [node name="Camera" type="Node2D" unique_id=1572491455]
+process_mode = 3
 script = ExtResource("1_5wcd0")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=798358164]
@@ -18,3 +31,26 @@ transform = Transform2D(2, 0, 0, 2, 0, 0)
 offset_right = 256.0
 offset_bottom = 80.0
 color = Color(0, 0.01991511, 0.24144092, 1)
+
+[node name="Bounds" type="Area2D" parent="." unique_id=1026106715]
+visible = false
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds" unique_id=685624773]
+position = Vector2(0, -152)
+shape = SubResource("RectangleShape2D_5wcd0")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Bounds" unique_id=1935222312]
+position = Vector2(-136, -64)
+shape = SubResource("RectangleShape2D_h8b3l")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Bounds" unique_id=1737629798]
+position = Vector2(136, -64)
+shape = SubResource("RectangleShape2D_44l16")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Bounds" unique_id=656343761]
+position = Vector2(0, 72)
+shape = SubResource("RectangleShape2D_lq5bj")
+
+[connection signal="body_entered" from="Bounds" to="." method="on_player_exit_camera"]
