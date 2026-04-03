@@ -116,7 +116,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"North",
-"speed": 7.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -167,7 +167,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"South",
-"speed": 7.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -214,7 +214,7 @@ script = ExtResource("1_3y5cq")
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1560766176]
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_3y5cq")
-animation = &"South"
+animation = &"North"
 autoplay = "South"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1413904005]

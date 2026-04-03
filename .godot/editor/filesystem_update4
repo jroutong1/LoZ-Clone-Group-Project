@@ -1,1 +1,3 @@
 res://world.tscn
+res://Objects/player.gd
+res://Objects/player.tscn

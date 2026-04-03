@@ -1,12 +1,13 @@
 63f7b34db8d8cdea90c76aacccf841ec
-::res://::1775166694
-world.tscn::PackedScene::5552103534542087474::1775164529::0::1::::<><><>0<>0<><>::uid://ceuagovjjkm7i::::res://Objects/player.tscn<>uid://bmfkbsknlo36t::::res://Objects/camera.tscn<>uid://cgqtg1ib5rus4::::res://Sprites/Grasswall tiles.png
-::res://Objects/::1775164434
+::res://::1775227888
+world.tscn::PackedScene::5552103534542087474::1775227888::0::1::::<><><>0<>0<><>::uid://ceuagovjjkm7i::::res://Objects/player.tscn<>uid://bmfkbsknlo36t::::res://Objects/camera.tscn<>uid://cgqtg1ib5rus4::::res://Sprites/Grasswall tiles.png
+::res://Objects/::1775227951
 camera.gd::GDScript::1380584661217693251::1775066131::0::1::::<>Node2D<><>0<>0<><>::
 camera.tscn::PackedScene::3239618613315648737::1775164073::0::1::::<><><>0<>0<><>::uid://tw1a68k20opv::::res://Objects/camera.gd
-player.gd::GDScript::7078440364010620649::1775163974::0::1::::<>CharacterBody2D<><>0<>0<><>::
-player.tscn::PackedScene::5094895779972105144::1775164434::0::1::::<><><>0<>0<><>::uid://c73344xmpca6l::::res://Objects/player.gd<>uid://b653tgoue5qwt::::res://Sprites/Player.png
-::res://Sprites/::1775166709
-Grasswall tiles.png::CompressedTexture2D::5228170188957101529::1775158113::1775158133::1::::<><><>0<>0<>7dae15899dabdce4397df818f3da0e52<>res://.godot/imported/Grasswall tiles.png-ffa440a3d216999380625e5a7c5380fc.ctex::
-Player.png::CompressedTexture2D::4625940512658167151::1775160838::1775160871::1::::<><><>0<>0<>b5e4a1c9cfcc6fca7dbfe1973de83704<>res://.godot/imported/Player.png-0662117005c6b9039deb63a286c8efe4.ctex::
+player.gd::GDScript::7078440364010620649::1775227074::0::1::::<>CharacterBody2D<><>0<>0<><>::
+player.tscn::PackedScene::5094895779972105144::1775227951::0::1::::<><><>0<>0<><>::uid://c73344xmpca6l::::res://Objects/player.gd<>uid://b653tgoue5qwt::::res://Sprites/Player.png
+::res://Sprites/::1775230382
+Entrance.png::CompressedTexture2D::6721660038229578945::1775230017::1775230387::1::::<><><>0<>0<>55ff445c86ee96c34a428d162e33e2c3<>res://.godot/imported/Entrance.png-39a6666fa86f688c5df51573dcac8e0c.ctex::
+Grasswall tiles.png::CompressedTexture2D::5228170188957101529::1775230346::1775230387::1::::<><><>0<>0<>7dae15899dabdce4397df818f3da0e52<>res://.godot/imported/Grasswall tiles.png-ffa440a3d216999380625e5a7c5380fc.ctex::
+Player.png::CompressedTexture2D::4625940512658167151::1775227807::1775227824::1::::<><><>0<>0<>b5e4a1c9cfcc6fca7dbfe1973de83704<>res://.godot/imported/Player.png-0662117005c6b9039deb63a286c8efe4.ctex::
 sword.png::CompressedTexture2D::2436843450801488329::1775166656::1775166713::1::::<><><>0<>0<>c607a75346b8f74954deb26d3aaf7964<>res://.godot/imported/sword.png-1cbf2b4fd1efdbc747c0161ef69297ef.ctex::
