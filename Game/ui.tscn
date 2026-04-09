@@ -1,0 +1,159 @@
+[gd_scene format=3 uid="uid://u3pb4kvh55r3"]
+
+[ext_resource type="Script" uid="uid://cb65llk4a13if" path="res://Game/ui.gd" id="1_cc7g4"]
+[ext_resource type="FontFile" uid="uid://cf0hjfl71vps2" path="res://Sprites/font.png" id="1_gj668"]
+[ext_resource type="Texture2D" uid="uid://hjls4s8yu4b5" path="res://Sprites/Life heart.png" id="2_boob6"]
+[ext_resource type="Texture2D" uid="uid://cngcpbliyc2x8" path="res://Sprites/UI item.png" id="3_ydixx"]
+[ext_resource type="Texture2D" uid="uid://bayopqxgufh3n" path="res://Sprites/sword.png" id="4_cc7g4"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_boob6"]
+font = ExtResource("1_gj668")
+font_size = 10
+
+[sub_resource type="Animation" id="Animation_ydixx"]
+resource_name = "Fade In"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fade:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.35, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.6862745), Color(1, 1, 1, 0.34117648), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_1cjds"]
+resource_name = "Fade Out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fade:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.35, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.34117648), Color(1, 1, 1, 0.6862745), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_cc7g4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fade:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1cjds"]
+_data = {
+&"Fade In": SubResource("Animation_ydixx"),
+&"Fade Out": SubResource("Animation_1cjds"),
+&"RESET": SubResource("Animation_cc7g4")
+}
+
+[node name="UI" type="CanvasLayer" unique_id=1399885062]
+process_mode = 3
+scale = Vector2(2, 2)
+transform = Transform2D(2, 0, 0, 2, 0, 0)
+script = ExtResource("1_cc7g4")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1226023737]
+offset_right = 256.0
+offset_bottom = 80.0
+color = Color(0, 0.01991511, 0.24144092, 1)
+
+[node name="Life" type="Label" parent="." unique_id=644366724]
+offset_left = 50.5
+offset_top = 17.5
+offset_right = 94.5
+offset_bottom = 25.5
+text = "- LIFE -"
+label_settings = SubResource("LabelSettings_boob6")
+
+[node name="Z" type="Label" parent="." unique_id=1533531503]
+visible = false
+offset_left = 145.5
+offset_top = 17.5
+offset_right = 153.0
+offset_bottom = 25.5
+text = "Z"
+label_settings = SubResource("LabelSettings_boob6")
+
+[node name="Heart1" type="TextureRect" parent="." unique_id=1406519828]
+offset_left = 45.0
+offset_top = 47.5
+offset_right = 61.0
+offset_bottom = 63.5
+texture = ExtResource("2_boob6")
+
+[node name="Heart2" type="TextureRect" parent="." unique_id=959826054]
+offset_left = 64.0
+offset_top = 48.0
+offset_right = 80.0
+offset_bottom = 64.0
+texture = ExtResource("2_boob6")
+
+[node name="Heart3" type="TextureRect" parent="." unique_id=713593735]
+offset_left = 82.5
+offset_top = 48.0
+offset_right = 98.5
+offset_bottom = 64.0
+texture = ExtResource("2_boob6")
+
+[node name="Box1" type="TextureRect" parent="." unique_id=248006714]
+offset_left = 137.5
+offset_top = 44.5
+offset_right = 159.5
+offset_bottom = 66.5
+texture = ExtResource("3_ydixx")
+
+[node name="Box2" type="TextureRect" parent="." unique_id=265053133]
+offset_left = 183.5
+offset_top = 44.5
+offset_right = 205.5
+offset_bottom = 66.5
+texture = ExtResource("3_ydixx")
+
+[node name="Sword" type="TextureRect" parent="." unique_id=1350411191]
+visible = false
+offset_left = 157.0
+offset_top = 63.999996
+offset_right = 173.0
+offset_bottom = 80.0
+rotation = -3.1415927
+texture = ExtResource("4_cc7g4")
+
+[node name="Screen" type="AnimationPlayer" parent="." unique_id=1933226045]
+libraries/ = SubResource("AnimationLibrary_1cjds")
+
+[node name="Fade" type="ColorRect" parent="." unique_id=976687154]
+offset_top = 80.0
+offset_right = 256.0
+offset_bottom = 256.0
+color = Color(0, 0, 0.14901961, 1)
+
+[node name="Intro Timer" type="Timer" parent="." unique_id=1673849148]
+wait_time = 1.5
+one_shot = true
+
+[node name="Room FadeOut Timer" type="Timer" parent="." unique_id=39415352]
+one_shot = true
+
+[node name="Room FadeIn Timer" type="Timer" parent="." unique_id=1227540493]
+wait_time = 1.5
+one_shot = true
+
+[connection signal="timeout" from="Intro Timer" to="." method="_on_intro_timer_timeout"]
+[connection signal="timeout" from="Room FadeOut Timer" to="." method="_on_room_fade_out_timer_timeout"]
+[connection signal="timeout" from="Room FadeIn Timer" to="." method="_on_room_fade_in_timer_timeout"]

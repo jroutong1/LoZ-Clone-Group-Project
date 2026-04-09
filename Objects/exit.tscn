@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cum6byx7kvawt"]
+
+[ext_resource type="Script" uid="uid://ch36nkv6upuko" path="res://Objects/exit.gd" id="1_pcxpa"]
+
+[node name="Exit" type="Area2D" unique_id=748416506]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_pcxpa")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

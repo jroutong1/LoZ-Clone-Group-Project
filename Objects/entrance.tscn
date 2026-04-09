@@ -1,9 +1,90 @@
 [gd_scene format=3 uid="uid://b5x7iebbgulxr"]
 
 [ext_resource type="Texture2D" uid="uid://c21a02fg2d8hh" path="res://Sprites/Entrance.png" id="1_81x88"]
+[ext_resource type="Script" uid="uid://tnnerca4o1q3" path="res://Objects/entrance.gd" id="1_lm3du"]
+[ext_resource type="Texture2D" uid="uid://dqp6wcgamu7rb" path="res://Sprites/Entrance arrow.png" id="3_iw6a5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_81x88"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lm3du"]
+size = Vector2(0.5, 0.5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4daop"]
+atlas = ExtResource("3_iw6a5")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x8gfc"]
+atlas = ExtResource("3_iw6a5")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gfs60"]
+atlas = ExtResource("3_iw6a5")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sv3vh"]
+atlas = ExtResource("3_iw6a5")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i11nn"]
+atlas = ExtResource("3_iw6a5")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tdrqe"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4daop")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x8gfc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gfs60")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sv3vh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i11nn")
+}],
+"loop": true,
+"name": &"Point",
+"speed": 9.0
+}]
 
 [node name="Entrance" type="Node2D" unique_id=1541182918]
+script = ExtResource("1_lm3du")
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=1201135616]
 position = Vector2(0, -8)
 texture = ExtResource("1_81x88")
+
+[node name="Near" type="Area2D" parent="." unique_id=24320159]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Near" unique_id=646861600]
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_81x88")
+debug_color = Color(0.7594448, 0.18293184, 0.99999994, 0.41960785)
+
+[node name="Enter" type="Area2D" parent="." unique_id=453754379]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enter" unique_id=2318817]
+shape = SubResource("RectangleShape2D_lm3du")
+debug_color = Color(0.20171374, 0.6412115, 0, 0.41960785)
+
+[node name="Arrow" type="AnimatedSprite2D" parent="." unique_id=553671931]
+visible = false
+position = Vector2(0, -6)
+sprite_frames = SubResource("SpriteFrames_tdrqe")
+animation = &"Point"
+frame_progress = 0.44854784
+
+[connection signal="body_entered" from="Near" to="." method="_on_near_body_entered"]
+[connection signal="body_exited" from="Near" to="." method="_on_near_body_exited"]
+[connection signal="body_entered" from="Enter" to="." method="_on_enter_body_entered"]
+[connection signal="body_exited" from="Enter" to="." method="_on_enter_body_exited"]
