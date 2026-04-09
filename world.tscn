@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://ceuagovjjkm7i" path="res://Objects/player.tscn" id="1_f3sb7"]
 [ext_resource type="PackedScene" uid="uid://b5x7iebbgulxr" path="res://Objects/entrance.tscn" id="2_aqk2v"]
 [ext_resource type="Texture2D" uid="uid://cgqtg1ib5rus4" path="res://Sprites/Grasswall tiles.png" id="3_tlwt5"]
+[ext_resource type="PackedScene" uid="uid://gymcq454mikf" path="res://Objects/placeholder_enemy.tscn" id="4_aqk2v"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aqk2v"]
 texture = ExtResource("3_tlwt5")
@@ -66,6 +67,12 @@ physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 3
 sources/1 = SubResource("TileSetAtlasSource_aqk2v")
 
+[sub_resource type="Curve2D" id="Curve2D_aqk2v"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1, -71, 0, 0, 0, 0, 27, -69, 0, 0, 0, 0, 27, -45, 0, 0, 0, 0, 1, -43, 0, 0, 0, 0, 1, -71)
+}
+point_count = 5
+
 [node name="World" type="Node2D" unique_id=1670081669]
 
 [node name="BG RM1" type="ColorRect" parent="." unique_id=1366957260]
@@ -93,4 +100,16 @@ position = Vector2(72, 112)
 position = Vector2(120, -64)
 
 [node name="Player" parent="." unique_id=856887729 instance=ExtResource("1_f3sb7")]
-position = Vector2(128, 192)
+position = Vector2(128, 25)
+
+[node name="Placeholder_Enemy" parent="." unique_id=1651231953 instance=ExtResource("4_aqk2v")]
+position = Vector2(42, 24)
+speed = 0.5
+
+[node name="Path2D" parent="Placeholder_Enemy" index="0" unique_id=1545424776]
+curve = SubResource("Curve2D_aqk2v")
+
+[node name="PathFollow2D" parent="Placeholder_Enemy/Path2D" index="0" unique_id=1146924677]
+position = Vector2(1, -71)
+
+[editable path="Placeholder_Enemy"]
