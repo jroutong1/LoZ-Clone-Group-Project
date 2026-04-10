@@ -3,6 +3,8 @@ extends Node2D
 @export var location = Vector2()
 @export var player_location = Vector2()
 @export var face_dir = ""
+@export var trigger_code = ""
+var count = 0
 
 var touching_door = false
 
@@ -15,6 +17,7 @@ func _process(_delta):
 			$Arrow.visible = false
 			$Arrow.stop()
 			door_entered()
+			count += 1
 
 func _on_enter_body_entered(_body):
 	touching_door = true
@@ -28,7 +31,7 @@ func _on_enter_body_exited(_body):
 func door_entered():
 	touching_door = false
 	set_process(false)
-	Game.move_room(location, player_location, face_dir)
+	Game.move_room(location, player_location, face_dir, trigger_code, count)
 
 
 func _on_near_body_entered(_body):

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bnnwndbinrtvh"]
 
 [ext_resource type="Texture2D" uid="uid://cvwml57wej7q" path="res://Sprites/Old man.png" id="1_pinfx"]
+[ext_resource type="Script" uid="uid://jhjkj3edvbdp" path="res://Objects/old_man.gd" id="1_xjg2j"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xjg2j"]
 atlas = ExtResource("1_pinfx")
@@ -28,11 +29,16 @@ animations = [{
 size = Vector2(13, 17)
 
 [node name="Old Man" type="StaticBody2D" unique_id=469857769]
+script = ExtResource("1_xjg2j")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=477159463]
 sprite_frames = SubResource("SpriteFrames_n3liu")
 animation = &"Chit Chat"
-autoplay = "Chit Chat"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=488285893]
 shape = SubResource("RectangleShape2D_pinfx")
+
+[node name="Chat Timer" type="Timer" parent="." unique_id=2117115105]
+one_shot = true
+
+[connection signal="timeout" from="Chat Timer" to="." method="_on_chat_timer_timeout"]

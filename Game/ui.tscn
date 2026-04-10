@@ -5,8 +5,57 @@
 [ext_resource type="Texture2D" uid="uid://hjls4s8yu4b5" path="res://Sprites/Life heart.png" id="2_boob6"]
 [ext_resource type="Texture2D" uid="uid://cngcpbliyc2x8" path="res://Sprites/UI item.png" id="3_ydixx"]
 [ext_resource type="Texture2D" uid="uid://bayopqxgufh3n" path="res://Sprites/sword.png" id="4_cc7g4"]
+[ext_resource type="Texture2D" uid="uid://cqs7tchnx31ky" path="res://Sprites/key.png" id="6_1cjds"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_boob6"]
+font = ExtResource("1_gj668")
+font_size = 10
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_favt1"]
+atlas = ExtResource("6_1cjds")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1cjds"]
+atlas = ExtResource("6_1cjds")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="Animation" id="Animation_favt1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Dialogue:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_rfkg3"]
+resource_name = "Roll"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Dialogue:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y7go1"]
+_data = {
+&"RESET": SubResource("Animation_favt1"),
+&"Roll": SubResource("Animation_rfkg3")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_cc7g4"]
 font = ExtResource("1_gj668")
 font_size = 10
 
@@ -127,12 +176,51 @@ texture = ExtResource("3_ydixx")
 
 [node name="Sword" type="TextureRect" parent="." unique_id=1350411191]
 visible = false
-offset_left = 157.0
-offset_top = 63.999996
-offset_right = 173.0
-offset_bottom = 80.0
-rotation = -3.1415927
+offset_left = 141.0
+offset_top = 48.0
+offset_right = 157.0
+offset_bottom = 64.0
+rotation = -6.2831855
 texture = ExtResource("4_cc7g4")
+flip_v = true
+
+[node name="Key" type="TextureRect" parent="." unique_id=396657282]
+visible = false
+offset_left = 187.0
+offset_top = 47.999992
+offset_right = 203.0
+offset_bottom = 63.999992
+rotation = -6.2831855
+texture = SubResource("AtlasTexture_favt1")
+
+[node name="Key Broken" type="TextureRect" parent="." unique_id=786092881]
+visible = false
+offset_left = 187.0
+offset_top = 47.999992
+offset_right = 203.0
+offset_bottom = 63.999992
+rotation = -6.2831855
+texture = SubResource("AtlasTexture_1cjds")
+
+[node name="Text" type="AnimationPlayer" parent="." unique_id=2072581311]
+libraries/ = SubResource("AnimationLibrary_y7go1")
+
+[node name="Dialogue" type="Label" parent="." unique_id=2043139654]
+anchors_preset = -1
+anchor_left = -0.017578125
+anchor_right = 0.01953125
+offset_left = 65.5
+offset_top = 110.0
+offset_right = 191.5
+offset_bottom = 133.0
+size_flags_horizontal = 4
+text = "DEFAULT DIALOGUE TEXT WHOAAAAAAA"
+label_settings = SubResource("LabelSettings_cc7g4")
+horizontal_alignment = 1
+autowrap_mode = 2
+visible_characters = 0
+visible_ratio = 0.0
+metadata/_edit_use_anchors_ = true
 
 [node name="Screen" type="AnimationPlayer" parent="." unique_id=1933226045]
 libraries/ = SubResource("AnimationLibrary_1cjds")

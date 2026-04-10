@@ -32,6 +32,9 @@ func show_sword():
 	$Sword.visible = true
 	$Z.visible = true
 
+func show_key():
+	$Key.visible = true
+
 func entrance_fade_out():
 	$Screen.play("Fade Out")
 	$"Room FadeOut Timer".start()
@@ -44,4 +47,14 @@ func entrance_fade_in():
 	$"Room FadeIn Timer".start()
 
 func _on_room_fade_in_timer_timeout():
-	Game.game_resume()
+	Game.game_resume_room()
+
+func hide_dialogue():
+	$Dialogue.visible = false
+
+func say_dialogue(message, time):
+	$Dialogue.text = message
+	$Text.play("Roll")
+	$Text.speed_scale = 1/time
+	$Dialogue.visible = true
+	

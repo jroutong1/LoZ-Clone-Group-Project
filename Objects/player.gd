@@ -8,6 +8,8 @@ var state = STATE.ACTIONABLE
 enum DIR {NORTH, EAST, SOUTH, WEST}
 var aim_dir = DIR.SOUTH
 var has_sword = false
+var has_key = false
+var has_broken_key = false
 
 func _ready():
 	#just_hurt.connect(on_hurt)
@@ -93,3 +95,7 @@ func pickup_sword():
 
 func _on_sword_body_entered(_body):
 	$Attack/Sword/Particles.emitting = true
+
+func pickup_key():
+	has_key = true
+	Game.pickup_key()

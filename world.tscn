@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://gymcq454mikf" path="res://Objects/placeholder_enemy.tscn" id="4_aqk2v"]
 [ext_resource type="PackedScene" uid="uid://cum6byx7kvawt" path="res://Objects/exit.tscn" id="5_pkg7o"]
 [ext_resource type="PackedScene" uid="uid://fvkm6d0djyae" path="res://Objects/sword_item.tscn" id="6_gbfbk"]
+[ext_resource type="PackedScene" uid="uid://dry6g0rlv35v" path="res://Objects/key_item.tscn" id="7_wse8f"]
 [ext_resource type="PackedScene" uid="uid://bnnwndbinrtvh" path="res://Objects/old_man.tscn" id="9_ioo17"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pkg7o"]
@@ -201,6 +202,7 @@ position = Vector2(72, 112)
 location = Vector2(-128, 192)
 player_location = Vector2(-128, 238)
 face_dir = "N"
+trigger_code = "NPCROOM"
 
 [node name="Entrance2" parent="Level" unique_id=1567315036 instance=ExtResource("2_aqk2v")]
 position = Vector2(-136, -64)
@@ -228,6 +230,9 @@ shape = SubResource("RectangleShape2D_gbfbk")
 
 [node name="Sword Item" parent="Level" unique_id=868790333 instance=ExtResource("6_gbfbk")]
 position = Vector2(-127, 186)
+
+[node name="Key Item" parent="Level" unique_id=495374037 instance=ExtResource("7_wse8f")]
+position = Vector2(-128, -216)
 
 [node name="Entities" type="Node2D" parent="." unique_id=604345804]
 
