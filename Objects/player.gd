@@ -1,9 +1,8 @@
 extends CharacterBody2D
 
-#signal just_hurt
 
 const SPEED = 70.0
-enum STATE {ACTIONABLE, ATTACKING}
+enum STATE {ACTIONABLE, ATTACKING, STUNNED}
 var state = STATE.ACTIONABLE
 enum DIR {NORTH, EAST, SOUTH, WEST}
 var aim_dir = DIR.SOUTH
@@ -11,9 +10,10 @@ var has_sword = false
 var has_key = false
 var has_broken_key = false
 
+var invincible = false
+
 func _ready():
-	#just_hurt.connect(on_hurt)
-	$Sprite.play("North")
+	$Sprite.play("South")
 
 func _physics_process(_delta):
 	match state:
@@ -33,6 +33,9 @@ func _physics_process(_delta):
 					state = STATE.ATTACKING
 					$"Attack/Pre-Delay".start()
 		STATE.ATTACKING:
+			velocity.x = move_toward(velocity.x, 0, SPEED)
+			velocity.y = move_toward(velocity.y, 0, SPEED)
+		STATE.STUNNED:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 			velocity.y = move_toward(velocity.y, 0, SPEED)
 	move_and_slide()
@@ -86,16 +89,31 @@ func _on_attack_pre_delay_timeout():
 	#$Attack/Sword/Hitbox.set_deferred("disabled", false)
 
 func on_hurt():
-	Game.on_hurt()
+	if invincible == false:
+		invincible = true
+		$"I Timer".start()
+		state = STATE.STUNNED
+		$Effect.play("Flash", -1, 2.0)
+		$Sprite.stop()
+		Game.on_hurt()
 
 func pickup_sword():
 	has_sword = true
 	Game.pickup_sword()
 
 
-func _on_sword_body_entered(_body):
-	$Attack/Sword/Particles.emitting = true
+func _on_sword_body_entered(body):
+	if body.is_in_group("enemies"):
+		body.on_killed()
+	else:
+		$Attack/Sword/Particles.emitting = true
 
 func pickup_key():
 	has_key = true
 	Game.pickup_key()
+
+
+func _on_i_timer_timeout():
+	invincible = false
+	state = STATE.ACTIONABLE
+	$Effect.play("RESET")

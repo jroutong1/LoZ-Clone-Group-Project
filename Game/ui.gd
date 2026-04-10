@@ -2,12 +2,26 @@ extends CanvasLayer
 
 
 func intro():
-	$Screen.play("Fade In")
+	$Cover.visible = true
+	$Screen.play("RESET")
 	$"Intro Timer".start()
+	$Faller.visible = true
+	$"under dale".play("Fall")
 
+func outro_good(delay):
+	$"Outro Good Timer".start(delay)
+
+func outro_bad(delay):
+	$"Outro Bad Timer".start(delay)
+
+func outro_over():
+	$"Outro Over Timer".start()
 
 func _on_intro_timer_timeout():
-	Game.game_start()
+	$Faller.visible = false
+	$Cover.visible = false
+	$"Start Timer".start()
+	$Screen.play("Fade In")
 
 func set_lives(num):
 	match num:
@@ -58,3 +72,30 @@ func say_dialogue(message, time):
 	$Text.speed_scale = 1/time
 	$Dialogue.visible = true
 	
+
+
+func _on_outro_good_timer_timeout():
+	$Screen.play("Fade Out White")
+	$"Win Good".visible = true
+	Game.game_end()
+
+
+func _on_outro_bad_timer_timeout():
+	$Screen.play("Fade Out")
+	$"Win Bad".visible = true
+	Game.game_end()
+
+
+func _on_outro_over_timer_timeout():
+	$Screen.play("Fade Out Red")
+	$"Game Over".visible = true
+	Game.game_end()
+
+func shatter_key():
+	$Key.visible = false
+	$"Key Shatter".emitting = true
+	$"Key Broken".visible = true
+
+
+func _on_start_timer_timeout():
+	Game.game_start()

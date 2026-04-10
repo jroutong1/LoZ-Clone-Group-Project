@@ -13,6 +13,10 @@ var face_target
 var room_target
 var room_target_count
 
+func _process(_delta):
+	if Input.is_action_just_pressed("exit_game"):
+		get_tree().quit()
+
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	
@@ -34,14 +38,24 @@ func game_resume_room():
 	#room_target = ""
 	#room_target_count = 0
 
+func game_end():
+	get_tree().paused = true
+	#await Input.action_press("ui_cancel")
+	await get_tree().create_timer(3.0).timeout
+	get_tree().quit()
+
 func on_hurt():
+	if $"../World/Player".has_broken_key == false and $"../World/Player".has_key == true:
+		ui_instance.shatter_key()
+		$"../World/Player".has_broken_key = true
 	lives -= 1
 	ui_instance.set_lives(lives)
-	if lives >= 0:
+	if lives <= 0:
 		on_death()
 
 func on_death():
 	get_tree().paused = true
+	ui_instance.outro_over()
 
 func pickup_sword():
 	ui_instance.show_sword()
@@ -96,10 +110,26 @@ func room_logic(trig, use):
 			
 			#WINS
 			elif $"../World/Player".has_sword == true and $"../World/Player".has_key == true and $"../World/Player".has_broken_key == false:
-				pass #WIN CONDITION SWORD AND KEY
+				#WIN CONDITION SWORD AND KEY
+				$"../World/Level/Exit".queue_free()
+				ui_instance.outro_good(5)
+				$"../World/Entities/Old Man".chat(3.1)
+				ui_instance.say_dialogue("You found the key...? Wonderful... It's time to go home...", 3.1)
 			elif $"../World/Player".has_sword == true and $"../World/Player".has_key == true and $"../World/Player".has_broken_key == true:
-				pass #WIN CONDITION SWORD AND BROKEN KEY
+				#WIN CONDITION SWORD AND BROKEN KEY
+				$"../World/Level/Exit".queue_free()
+				ui_instance.outro_bad(5)
+				$"../World/Entities/Old Man".chat(3.5)
+				ui_instance.say_dialogue("You broke the key...!? I'm afraid you'll be stuck here for a long time...", 3.5)
 			elif $"../World/Player".has_sword == false and $"../World/Player".has_key == true and $"../World/Player".has_broken_key == false:
-				pass #WIN CONDITION ONLY KEY
+				#WIN CONDITION ONLY KEY
+				$"../World/Level/Exit".queue_free()
+				ui_instance.outro_good(5)
+				$"../World/Entities/Old Man".chat(3.3)
+				ui_instance.say_dialogue("You got the key without my sword? Truly... Excellent...", 3.3)
 			elif $"../World/Player".has_sword == false and $"../World/Player".has_key == true and $"../World/Player".has_broken_key == true:
-				pass #WIN CONDITION ONLY BROKEN KEY
+				#WIN CONDITION ONLY BROKEN KEY
+				$"../World/Level/Exit".queue_free()
+				ui_instance.outro_bad(5)
+				$"../World/Entities/Old Man".chat(3.7)
+				ui_instance.say_dialogue("You broke the key...!? Maybe if you took the sword, things would be different...", 3.7)

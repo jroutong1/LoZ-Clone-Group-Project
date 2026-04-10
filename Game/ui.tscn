@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cngcpbliyc2x8" path="res://Sprites/UI item.png" id="3_ydixx"]
 [ext_resource type="Texture2D" uid="uid://bayopqxgufh3n" path="res://Sprites/sword.png" id="4_cc7g4"]
 [ext_resource type="Texture2D" uid="uid://cqs7tchnx31ky" path="res://Sprites/key.png" id="6_1cjds"]
+[ext_resource type="Texture2D" uid="uid://bnx23il1ctmxv" path="res://Sprites/how was the fall.png" id="7_favt1"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_boob6"]
 font = ExtResource("1_gj668")
@@ -73,6 +74,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.6862745), Color(1, 1, 1, 0.34117648), Color(1, 1, 1, 0)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Fade:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0.14901961, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_1cjds"]
 resource_name = "Fade Out"
@@ -87,6 +100,72 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.34117648), Color(1, 1, 1, 0.6862745), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Fade:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0.14901961, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_shwn2"]
+resource_name = "Fade Out Red"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fade:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.35, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.34117648), Color(1, 1, 1, 0.6862745), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Fade:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.1998477, 0.0027701594, 0.06706, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_y7go1"]
+resource_name = "Fade Out White"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fade:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.35, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.34117648), Color(1, 1, 1, 0.6862745), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Fade:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.74204445, 0.8283267, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_cc7g4"]
@@ -103,13 +182,138 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Fade:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0.14901961, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1cjds"]
 _data = {
 &"Fade In": SubResource("Animation_ydixx"),
 &"Fade Out": SubResource("Animation_1cjds"),
+&"Fade Out Red": SubResource("Animation_shwn2"),
+&"Fade Out White": SubResource("Animation_y7go1"),
 &"RESET": SubResource("Animation_cc7g4")
 }
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y7go1"]
+atlas = ExtResource("7_favt1")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_shwn2"]
+atlas = ExtResource("7_favt1")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7ts3d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y7go1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_shwn2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_7ts3d"]
+resource_name = "Fall"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Faller:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(128.5, 75.5), Vector2(128.5, 175)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Faller:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Faller:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1, 1.25, 1.5, 1.75, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.7607843), Color(1, 1, 1, 0.5058824), Color(1, 1, 1, 0.26666668), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_jwu6q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Faller:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(128.5, 75.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Faller:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Faller:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o3srb"]
+_data = {
+&"Fall": SubResource("Animation_7ts3d"),
+&"RESET": SubResource("Animation_jwu6q")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rfkg3"]
+atlas = ExtResource("6_1cjds")
+region = Rect2(3, 2, 3, 3)
 
 [node name="UI" type="CanvasLayer" unique_id=1399885062]
 process_mode = 3
@@ -231,8 +435,73 @@ offset_right = 256.0
 offset_bottom = 256.0
 color = Color(0, 0, 0.14901961, 1)
 
+[node name="Faller" type="AnimatedSprite2D" parent="." unique_id=868803395]
+position = Vector2(128.5, 75.5)
+sprite_frames = SubResource("SpriteFrames_7ts3d")
+speed_scale = 0.0
+
+[node name="Cover" type="ColorRect" parent="." unique_id=892359216]
+visible = false
+offset_right = 256.0
+offset_bottom = 80.0
+color = Color(0, 0.01991511, 0.24144092, 1)
+
+[node name="under dale" type="AnimationPlayer" parent="." unique_id=1758959479]
+libraries/ = SubResource("AnimationLibrary_o3srb")
+
+[node name="Win Good" type="Label" parent="." unique_id=941658030]
+visible = false
+anchors_preset = -1
+anchor_left = -0.017578125
+anchor_right = 0.01953125
+offset_left = 65.5
+offset_top = 162.5
+offset_right = 191.5
+offset_bottom = 185.5
+size_flags_horizontal = 4
+text = "RETURNED HOME"
+label_settings = SubResource("LabelSettings_cc7g4")
+horizontal_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Win Bad" type="Label" parent="." unique_id=1899267189]
+visible = false
+anchors_preset = -1
+anchor_left = -0.017578125
+anchor_right = 0.01953125
+offset_left = 65.5
+offset_top = 162.5
+offset_right = 191.5
+offset_bottom = 185.5
+size_flags_horizontal = 4
+text = "TRAPPED?"
+label_settings = SubResource("LabelSettings_cc7g4")
+horizontal_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Game Over" type="Label" parent="." unique_id=1539306616]
+visible = false
+anchors_preset = -1
+anchor_left = -0.017578125
+anchor_right = 0.01953125
+offset_left = 65.5
+offset_top = 162.5
+offset_right = 191.5
+offset_bottom = 185.5
+size_flags_horizontal = 4
+text = "GAME OVER"
+label_settings = SubResource("LabelSettings_cc7g4")
+horizontal_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
 [node name="Intro Timer" type="Timer" parent="." unique_id=1673849148]
-wait_time = 1.5
+wait_time = 2.0
+one_shot = true
+
+[node name="Start Timer" type="Timer" parent="." unique_id=602947287]
 one_shot = true
 
 [node name="Room FadeOut Timer" type="Timer" parent="." unique_id=39415352]
@@ -242,6 +511,32 @@ one_shot = true
 wait_time = 1.5
 one_shot = true
 
+[node name="Outro Good Timer" type="Timer" parent="." unique_id=327866111]
+one_shot = true
+
+[node name="Outro Bad Timer" type="Timer" parent="." unique_id=966305961]
+one_shot = true
+
+[node name="Outro Over Timer" type="Timer" parent="." unique_id=1660033265]
+wait_time = 0.2
+one_shot = true
+
+[node name="Key Shatter" type="CPUParticles2D" parent="." unique_id=562405807]
+position = Vector2(195, 55.5)
+emitting = false
+texture = SubResource("AtlasTexture_rfkg3")
+one_shot = true
+speed_scale = 0.6
+explosiveness = 1.0
+direction = Vector2(0, -1)
+spread = 75.0
+initial_velocity_min = 100.0
+initial_velocity_max = 250.0
+
 [connection signal="timeout" from="Intro Timer" to="." method="_on_intro_timer_timeout"]
+[connection signal="timeout" from="Start Timer" to="." method="_on_start_timer_timeout"]
 [connection signal="timeout" from="Room FadeOut Timer" to="." method="_on_room_fade_out_timer_timeout"]
 [connection signal="timeout" from="Room FadeIn Timer" to="." method="_on_room_fade_in_timer_timeout"]
+[connection signal="timeout" from="Outro Good Timer" to="." method="_on_outro_good_timer_timeout"]
+[connection signal="timeout" from="Outro Bad Timer" to="." method="_on_outro_bad_timer_timeout"]
+[connection signal="timeout" from="Outro Over Timer" to="." method="_on_outro_over_timer_timeout"]

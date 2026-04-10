@@ -482,8 +482,46 @@ _data = {
 &"West": SubResource("Animation_ng3n2")
 }
 
+[sub_resource type="Animation" id="Animation_2i4gt"]
+resource_name = "Flash"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [Color(0.41598046, 0.41598043, 0.4159804, 1), Color(0.2231029, 0.2231029, 0.22310287, 1), Color(0.41568628, 0.41568628, 0.41568628, 1), Color(0.2231029, 0.2231029, 0.22310287, 1), Color(0.41568628, 0.41568628, 0.41568628, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_f7am4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0ad8t"]
+_data = {
+&"Flash": SubResource("Animation_2i4gt"),
+&"RESET": SubResource("Animation_f7am4")
+}
+
 [node name="Player" type="CharacterBody2D" unique_id=856887729]
 collision_layer = 2
+collision_mask = 5
 floor_stop_on_slope = false
 script = ExtResource("1_3y5cq")
 
@@ -546,6 +584,14 @@ one_shot = true
 wait_time = 0.65
 one_shot = true
 
+[node name="Effect" type="AnimationPlayer" parent="." unique_id=302487569]
+libraries/ = SubResource("AnimationLibrary_0ad8t")
+autoplay = &"RESET"
+
+[node name="I Timer" type="Timer" parent="." unique_id=1509170072]
+one_shot = true
+
 [connection signal="body_entered" from="Attack/Sword" to="." method="_on_sword_body_entered"]
 [connection signal="timeout" from="Attack/Pre-Delay" to="." method="_on_attack_pre_delay_timeout"]
 [connection signal="timeout" from="Attack/Delay" to="." method="_on_attack_delay_timeout"]
+[connection signal="timeout" from="I Timer" to="." method="_on_i_timer_timeout"]
