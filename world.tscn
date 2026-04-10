@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://gymcq454mikf" path="res://Objects/placeholder_enemy.tscn" id="4_aqk2v"]
 [ext_resource type="PackedScene" uid="uid://cum6byx7kvawt" path="res://Objects/exit.tscn" id="5_pkg7o"]
 [ext_resource type="PackedScene" uid="uid://fvkm6d0djyae" path="res://Objects/sword_item.tscn" id="6_gbfbk"]
+[ext_resource type="PackedScene" uid="uid://bnnwndbinrtvh" path="res://Objects/old_man.tscn" id="9_ioo17"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pkg7o"]
 texture = ExtResource("1_dwbse")
@@ -227,6 +228,11 @@ shape = SubResource("RectangleShape2D_gbfbk")
 
 [node name="Sword Item" parent="Level" unique_id=868790333 instance=ExtResource("6_gbfbk")]
 position = Vector2(-127, 186)
+
+[node name="Entities" type="Node2D" parent="." unique_id=604345804]
+
+[node name="Old Man" parent="Entities" unique_id=469857769 instance=ExtResource("9_ioo17")]
+position = Vector2(-128, 155)
 
 [node name="Player" parent="." unique_id=856887729 instance=ExtResource("1_f3sb7")]
 position = Vector2(128, 178)
